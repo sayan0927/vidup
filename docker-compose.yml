@@ -1,0 +1,199 @@
+version: '3.7'
+
+
+networks:
+  vidup-net:
+  
+  
+services:
+  
+
+  
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGODB_INITDB_DATABASE: vidup
+    ports:
+      - "27017:27017"
+    networks:
+      - vidup-net
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d/
+        
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - "28081:8002"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: pass
+      #ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: pass
+      ME_CONFIG_MONGODB_URL: mongo://mongoadmin:mongoadmin@mongodb:27017/ 
+    networks:
+      - vidup-net
+    depends_on:
+      - mongodb
+  
+  phpmyadmin:
+    depends_on:
+      - mysqldb
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8090:80"
+    environment:
+      PMA_HOST: mysqldb
+      MYSQL_ROOT_PASSWORD: pass
+    networks:
+      - vidup-net
+  # phpmyadmin
+  
+  
+  mysqldb:
+    platform: linux/x86_64
+    image: mysql:latest
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d/
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: vidup
+      MYSQL_PASSWORD: pass
+    networks:
+      - vidup-net
+      
+   
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: rabbit
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+    networks:
+      - vidup-net
+    environment:
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASSWORD: guest
+        
+  
+  
+  
+  
+  
+  
+  
+  
+  media-procc:
+    build: /vidup-media-processing
+    restart: always
+    container_name: media-procc
+    ports:
+      - "8001:8001"
+    networks:
+      - vidup-net  
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "register-data.url" : "http://core:8000/videos/processing/videoId/register_data"
+        }'
+      SPRING_PROFILES_ACTIVE: prod
+      SERVER_PORT: 8001
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./videostore-docker:/commonstore  
+  
+  
+  
+  
+  
+  stream:
+    build: /vidup-streaming
+    restart: always
+    container_name: stream
+    ports:
+      - "8080:8080"
+    networks:
+      - vidup-net  
+    env_file: ./.env  
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQLDialect"
+        }'
+      SPRING_PROFILES_ACTIVE: prod
+      SERVER_PORT: 8080
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_PASSWORD: "guest"
+      STREAMING_IP: 192.168.1.2
+      STREAMING_PORT: 8080
+      CORE_IP: 192.168.1.2
+      CORE_PORT: 8000
+      spring.datasource.url: jdbc:mysql://mysqldb:3306/vidup 
+    depends_on:
+      - mysqldb
+    volumes:
+      - ./videostore-docker:/commonstore  
+  
+  core:
+    build: /vidup-core-module
+    restart: always
+    container_name: core
+    ports:
+      - "8000:8000"
+    networks:
+      - vidup-net  
+    env_file: ./.env  
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_APPLICATION_JSON: '{
+          "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongodb:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
+        }'
+      SERVER_PORT: 8000
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_PASSWORD: "guest"
+      STREAMING_IP: 192.168.1.2
+      STREAMING_PORT: 8080
+      CORE_IP: 192.168.1.2
+      CORE_PORT: 8000
+      spring.datasource.url: jdbc:mysql://mysqldb:3306/basics?allowPublicKeyRetrieval=true  
+      spring.data.mongodb.host: mongodb
+      spring.data.mongodb.password: pass
+      spring.data.mongodb.username: root
+      spring.data.mongodb.port: 27017
+      spring.data.mongodb.uri: mongodb://mongodb:27017/vidup?authSource=admin
+    depends_on:
+      - mysqldb
+      - mongodb
+      - rabbitmq
+    volumes:
+      - ./videostore-docker:/commonstore  
+      
+      
+      
+      
+   
+   
+      
+    
+
+volumes:
+  db-data:
+  mongo-data:
+  videostore:
+    external: true
+ 
+
+    

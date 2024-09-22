@@ -1,0 +1,5 @@
+
+#profile_img:hover {
+    transform: scale(1.1); /* Zoom in by 10% */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
