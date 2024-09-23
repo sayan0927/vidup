@@ -30,5 +30,3 @@ How to run project
 
 10) Go to localhost:8000
 
-11) Login with username-admin
-	       password-admin
