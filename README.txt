@@ -28,5 +28,5 @@ How to run project
 
 9) Run both modules from Intellij Idea.
 
-10) Go to localhost:8000
+10) Go to localhost:800
 
