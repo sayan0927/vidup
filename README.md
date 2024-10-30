@@ -35,35 +35,72 @@ VIDUP is divided into several independent services connected through REST APIs a
 
 ## Diagram
 
-  //TODO
+  TODO
   
 ## Installation
 
-    Clone the repository:
-
-    bash
-
-git clone https://github.com/sayan0927/vidup
+Clone the repository:
 
 Navigate to the project directory:
 
-Set up environment variables in .env file:
+Set up environment variables ( create env.env file on linux or .env file on windows )
 
 
 ```
-MONGODB_USER=root
-MONGODB_PASSWORD=pass
-MONGODB_DATABASE=vidup
-MONGODB_DOCKER_PORT=27017
+EXT_SPRING_DATA_MONGODB_HOST='mongodb'
+EXT_MONGODB_DATABASE='vidup'
+EXT_MONGODB_DOCKER_PORT='27017'
+EXT_FINAL_STORE_LOCATION='local'
+EXT_SPRING_DATASOURCE_URL='jdbc:mysql://mysqldb:3306/vidup'
+```
+Put values of these environment variables as per your choice
+```
+EXT_SPRING_DATA_MONGODB_USERNAME='your_mongodb_uname'
+EXT_SPRING_DATA_MONGODB_PASSWORD='your_mongodb_pass'
+EXT_SPRING_MAIL_USERNAME='your_email'
+EXT_SPRING_MAIL_PASSWORD='your_email_pass'
+EXT_SPRING_DATASOURCE_USERNAME='your_mysql_uname'
+EXT_SPRING_DATASOURCE_PASSWORD='your_mysql_pass'
+EXT_SPRING_RABBITMQ_USERNAME='your_rabbit_uname'
+EXT_SPRING_RABBITMQ_PASSWORD='your_rabbit_pass'
 ```
 
-Start the application using Docker Compose:
 
-bash
+To use Azure Files as Storage instead of LocalStorage , set these environement variables 
+ ```
+    EXT_FINAL_STORE_LOCATION='azure'
+    EXT_AZURE_STORAGE_ACCOUNT='your_azure_storage_account'
+    EXT_AZURE_STORAGE_ACCOUNT_SAS_TOKEN="your_azure_storage_account_sas_token"
+    EXT_AZURE_VIDEO_FILES_CONTAINER='your_video_files_container'
+ ```
 
-    docker-compose up
+
+### To let the application be accessible from external network
+
+In docker-compose-**.yml file
+Modify the following variables of core service and give your own static ip.
+
+```
+      STREAMING_IP: 192.168.1.2
+      CORE_IP: 192.168.1.2
+
+      and set 
+
+      SPRING_PROFILES_ACTIVE: prod
+```
 
 
+
+
+### Start the application using Docker Compose:
+
+```
+    docker compose -f docker-compose-linux.yml up
+```
+or
+```
+    docker compose -f docker-compose-windows.yml up
+```
 
 ## Usage
 
@@ -76,5 +113,5 @@ After starting the application, the following services will be accessible:
    Visit VIDUP Core URL and login with credentials admin,admin.
 
 ## API Endpoints
-  //TODO
+ TODO
 
