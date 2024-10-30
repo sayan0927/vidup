@@ -33,9 +33,8 @@ VIDUP is divided into several independent services connected through REST APIs a
     vidup-media-procc: Responsible for media processing tasks such as transcoding and conversion.
     vidup-core: Provides the core functionality including user management, video metadata, and serves the frontend HTML.
 
-## Diagram
-
-  TODO
+## Diagrams
+In Progress
   
 ## Installation
 
@@ -130,6 +129,11 @@ or
     docker compose -f docker-compose-windows.yml up
 ```
 
+### Todo
+- [ ] Add NSFW Module to Docker Compose 
+
+
+
 ## Usage
 
 After starting the application, the following services will be accessible:
@@ -141,5 +145,5 @@ After starting the application, the following services will be accessible:
    Visit VIDUP Core URL and login with credentials admin,admin.
 
 ## API Endpoints
- TODO
+ In Progress
 
