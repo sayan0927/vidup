@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2mZL2ysAr1MXvaDo8ZceqVXxFzF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.vidup-docker.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in vidup-streaming.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.vidup-streaming | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.vidup-streaming | #2.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.vidup-core.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.vidup-media-processing.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.vidup-streaming.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan/Desktop/VIDUP_PROJECT/VIDUP - Copy/vidup-core-module&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.62643677&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sayan\Desktop\VIDUP_PROJECT\VIDUP\vidup-core-module\src\main\java\com\example\vidupcoremodule" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.vidupcoremodule.core.controller" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="excludedTypes">
+      <set>
+        <option value="HttpClient.HttpRequestRunConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.vidup-core">
+    <configuration name="All in vidup-streaming" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="vidup-streaming | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="vidup-streaming | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="vidup-core" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <envs>
+        <env name="azure.storage.account" value="https://vidup.blob.core.windows.net" />
+        <env name="azure.storage.account.sas.token" value="sv=2022-11-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacupiytfx&amp;se=2024-12-31T21:33:10Z&amp;st=2024-09-18T13:33:10Z&amp;spr=https,http&amp;sig=AtxsOnQqOxL5SVtTzvQoNSoSnuj9Qdd%2Bny%2BwS%2B71Vbw%3D" />
+        <env name="azure.video.files.container" value="video-files" />
+        <env name="spring.datasource.password" value=" " />
+        <env name="spring.datasource.username" value="root" />
+        <env name="spring.mail.password" value="hrgtodwihdvqojxh" />
+        <env name="spring.mail.username" value="vidup.manager@gmail.com" />
+        <env name="spring.rabbitmq.password" value="guest" />
+        <env name="spring.rabbitmq.username" value="guest" />
+        <env name="final.store.location" value="local" />
+      </envs>
+      <module name="vidup-core-module" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.vidupcoremodule.VidUpCoreStartup" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="vidup-media-processing" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <envs>
+        <env name="spring.rabbitmq.username" value="guest" />
+        <env name="spring.rabbitmq.password" value="guest" />
+      </envs>
+      <module name="vidup-media-processing" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.vidupmediaprocessing.MediaProcessingStartup" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="vidup-streaming" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-23" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="azure.storage.account" value="https://vidup.blob.core.windows.net" />
+        <env name="azure.storage.account.sas.token" value="sv=2022-11-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacupiytfx&amp;se=2024-12-31T21:33:10Z&amp;st=2024-09-18T13:33:10Z&amp;spr=https,http&amp;sig=AtxsOnQqOxL5SVtTzvQoNSoSnuj9Qdd%2Bny%2BwS%2B71Vbw%3D" />
+        <env name="azure.video.files.container" value="video-files" />
+        <env name="spring.datasource.password" value=" " />
+        <env name="spring.datasource.username" value="root" />
+      </envs>
+      <module name="vidup-streaming" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.vidupstreaming.VidupStreamingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="vidup-docker" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="../docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.vidup-docker" />
+      <item itemvalue="HTTP Request.vidup-streaming | #2" />
+      <item itemvalue="HTTP Request.All in vidup-streaming" />
+      <item itemvalue="HTTP Request.vidup-streaming | #1" />
+      <item itemvalue="Spring Boot.vidup-streaming" />
+      <item itemvalue="Spring Boot.vidup-media-processing" />
+      <item itemvalue="Spring Boot.vidup-core" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.vidup-streaming | #2" />
+        <item itemvalue="HTTP Request.All in vidup-streaming" />
+        <item itemvalue="HTTP Request.vidup-streaming | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="" />
+      <created>1727278950902</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727278950902</updated>
+      <workItem from="1727278951926" duration="187000" />
+      <workItem from="1727259847671" duration="4912000" />
+      <workItem from="1727358794128" duration="11000" />
+      <workItem from="1727431181889" duration="445000" />
+      <workItem from="1727435416386" duration="15000" />
+      <workItem from="1727972907549" duration="2378000" />
+      <workItem from="1728024176388" duration="990000" />
+      <workItem from="1728063119757" duration="1280000" />
+      <workItem from="1728305679845" duration="21000" />
+      <workItem from="1728313600290" duration="1239000" />
+      <workItem from="1728323936059" duration="1111000" />
+      <workItem from="1728448510540" duration="56000" />
+      <workItem from="1728911134381" duration="7926000" />
+      <workItem from="1728997621136" duration="51000" />
+      <workItem from="1729006837069" duration="2576000" />
+      <workItem from="1729009442455" duration="992000" />
+      <workItem from="1729010470690" duration="5890000" />
+      <workItem from="1729061413185" duration="1735000" />
+      <workItem from="1729085254224" duration="1335000" />
+      <workItem from="1729192239845" duration="595000" />
+      <workItem from="1729257744547" duration="8000" />
+      <workItem from="1729258441765" duration="430000" />
+      <workItem from="1729765020563" duration="703000" />
+      <workItem from="1729765823936" duration="617000" />
+      <workItem from="1729786096538" duration="1601000" />
+      <workItem from="1729787712298" duration="350000" />
+      <workItem from="1729788181033" duration="301000" />
+      <workItem from="1729833923615" duration="3680000" />
+      <workItem from="1729838696177" duration="460000" />
+      <workItem from="1729839189296" duration="1252000" />
+      <workItem from="1729840518922" duration="1047000" />
+      <workItem from="1729823321629" duration="2848000" />
+      <workItem from="1729848865105" duration="1111000" />
+      <workItem from="1729850425796" duration="1982000" />
+      <workItem from="1729878522457" duration="4000" />
+      <workItem from="1729929761198" duration="2235000" />
+      <workItem from="1729923039811" duration="3007000" />
+      <workItem from="1729989857459" duration="23000" />
+      <workItem from="1729991193160" duration="992000" />
+      <workItem from="1730029662824" duration="2265000" />
+      <workItem from="1730032799615" duration="117000" />
+      <workItem from="1730032999499" duration="9920000" />
+      <workItem from="1730036740081" duration="624000" />
+      <workItem from="1730108024080" duration="7000" />
+      <workItem from="1730275084423" duration="49000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:tailwindcss" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="executable:az" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-websocket" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+  </component>
+</project>

@@ -1,0 +1,10 @@
+GET http://localhost:8080/videos/permitted/dash_manifest/9dbe15e6-955a-4810-a1d5-2f3a0870a59a
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-10-15T220909.200.octet-stream
+
+###
+
