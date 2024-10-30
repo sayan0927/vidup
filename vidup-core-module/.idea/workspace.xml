@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="" />
+    <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-prod.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +53,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.vidup-core.executor": "Run",
     "Spring Boot.vidup-media-processing.executor": "Run",
     "Spring Boot.vidup-streaming.executor": "Run",
@@ -243,7 +246,7 @@
       <workItem from="1730036740081" duration="624000" />
       <workItem from="1730108024080" duration="7000" />
       <workItem from="1730275084423" duration="49000" />
-      <workItem from="1730305387430" duration="124000" />
+      <workItem from="1730305387430" duration="521000" />
     </task>
     <servers />
   </component>
