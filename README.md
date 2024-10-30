@@ -78,11 +78,11 @@ To use Azure Files as Storage instead of LocalStorage , set these environement v
 ### To let the application be accessible from external network
 
 In docker-compose-**.yml file
-Modify the following variables of core service and give your own static ip.
+Set the following variables of core service and give your own static ip.
 
 ```
-      STREAMING_IP: 192.168.1.2
-      CORE_IP: 192.168.1.2
+      STREAMING_IP: 
+      CORE_IP: 
 
       and set 
 
