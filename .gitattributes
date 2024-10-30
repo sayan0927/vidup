@@ -1,2 +1,2 @@
 vidup-nsfw-image/venv/Lib/** linguist-vendored
-vidup-core-module//node_modules/** linguist-vendored
+vidup-core-module/node_modules/** linguist-vendored
