@@ -17,6 +17,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -37,34 +40,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.vidup-docker.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.All in vidup-streaming.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.vidup-streaming | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.vidup-streaming | #2.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.vidup-core.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.vidup-media-processing.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.vidup-streaming.executor&quot;: &quot;Run&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan/Desktop/VIDUP_PROJECT/VIDUP - Copy/vidup-core-module&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.62643677&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.vidup-docker.executor": "Run",
+    "HTTP Request.All in vidup-streaming.executor": "Run",
+    "HTTP Request.vidup-streaming | #1.executor": "Run",
+    "HTTP Request.vidup-streaming | #2.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.vidup-core.executor": "Run",
+    "Spring Boot.vidup-media-processing.executor": "Run",
+    "Spring Boot.vidup-streaming.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sayan/Desktop/VIDUP_PROJECT/VIDUP - Copy/vidup-core-module",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15625",
+    "project.structure.side.proportion": "0.62643677",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sayan\Desktop\VIDUP_PROJECT\VIDUP\vidup-core-module\src\main\java\com\example\vidupcoremodule" />
@@ -85,7 +89,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.vidup-core">
+  <component name="RunManager" selected="Spring Boot.vidup-streaming">
     <configuration name="All in vidup-streaming" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http">
       <method v="2" />
     </configuration>
@@ -94,6 +98,13 @@
     </configuration>
     <configuration name="vidup-streaming | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
+    </configuration>
+    <configuration name="VidupStreamingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="vidup-streaming" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.vidupstreaming.VidupStreamingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="vidup-core" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" value="dev" />
@@ -139,7 +150,7 @@
         <env name="spring.datasource.username" value="root" />
       </envs>
       <module name="vidup-streaming" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.vidupstreaming.VidupStreamingApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.vidupstreaming.VidupStreamingApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,6 +169,7 @@
       <item itemvalue="HTTP Request.vidup-streaming | #2" />
       <item itemvalue="HTTP Request.All in vidup-streaming" />
       <item itemvalue="HTTP Request.vidup-streaming | #1" />
+      <item itemvalue="Spring Boot.VidupStreamingApplication" />
       <item itemvalue="Spring Boot.vidup-streaming" />
       <item itemvalue="Spring Boot.vidup-media-processing" />
       <item itemvalue="Spring Boot.vidup-core" />
@@ -231,6 +243,7 @@
       <workItem from="1730036740081" duration="624000" />
       <workItem from="1730108024080" duration="7000" />
       <workItem from="1730275084423" duration="49000" />
+      <workItem from="1730305387430" duration="124000" />
     </task>
     <servers />
   </component>

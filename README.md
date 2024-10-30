@@ -88,6 +88,14 @@ Set the following variables of core service and give your own static ip.
 
       SPRING_PROFILES_ACTIVE: prod
 ```
+Modify following variables of media-procc service and give your own static ip
+
+```
+
+"register-data.url": "http://localhost:8000/videos/processing/videoId/register_data",
+"dash.base.url.template": "<BaseURL>http://localhost:8080/videos/permitted/stream/dash/VIDEO_ID/</BaseURL>",
+
+```
 
 
 

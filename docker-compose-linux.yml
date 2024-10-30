@@ -93,7 +93,8 @@ services:
     env_file: ./env.env   
     environment:
       SPRING_APPLICATION_JSON: '{
-          "register-data.url": "http://core:8000/videos/processing/videoId/register_data",
+          "register-data.url": "http://localhost:8000/videos/processing/videoId/register_data",
+          "dash.base.url.template": "<BaseURL>http://localhost:8080/videos/permitted/stream/dash/VIDEO_ID/</BaseURL>",
           "spring.rabbitmq.username": "${EXT_SPRING_RABBITMQ_USERNAME}",
           "spring.rabbitmq.password": "${EXT_SPRING_RABBITMQ_PASSWORD}"
         }'
