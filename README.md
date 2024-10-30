@@ -43,7 +43,27 @@ Clone the repository:
 
 Navigate to the project directory:
 
-Set up environment variables ( create env.env file on linux or .env file on windows )
+### Set up jars
+
+A) Download jars from https://github.com/sayan0927/vidup/releases/download/v0.1-beta/vidup_jars.rar
+
+Copy and paste jars in following folders
+
+```
+vidup-core-module-0.0.1-SNAPSHOT.jar      -> vidup-core-module\target 
+vidup-media-processing-0.0.1-SNAPSHOT.jar -> vidup-media-processing\target 
+vidup-streaming-0.0.1-SNAPSHOT            -> vidup-streaming\target 
+```
+B) Alternatively , if you have JDK 21+ and Maven installed, you can compile yourself
+
+Open terminal in vidup-core-module
+```
+.\mvnw clean install
+```
+Do same for vidup-media-processing and vidup-streaming
+
+### Set up environment variables 
+Create env.env file on linux or .env file on windows 
 
 
 ```
