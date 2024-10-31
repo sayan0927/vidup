@@ -1,2 +1,3 @@
 vidup-nsfw-image/venv/Lib/** linguist-vendored
 vidup-core-module/node_modules/** linguist-vendored=true
+vidup-core-module/target/** linguist-vendored=true
