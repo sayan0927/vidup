@@ -131,38 +131,24 @@ public class Pipeline {
         Path inFilePath = receivedMessage.getInputPath();
         Path outPath = receivedMessage.getOutputPath();
         UUID videoID = receivedMessage.getVideoId();
+
         CompletableFuture<Void> dashFuture = mpegDashHandlerService.createDashFilesTest(inFileName, inFilePath, outPath, videoID).thenAccept(dtoList -> {
-
-
             if (dtoList == null || dtoList.isEmpty()) {
 
                 PipelineMessageFailure<UUID> failMsg = new PipelineMessageFailure<>(receivedMessage.getVideoId(), "Could not create the Dash files");
                 sender.sendMessage(failMsg, config.pipelineExchange, config.failKey);
                 return;
             }
-
-
-
-
-
-
             List<List<VideoDataDTO>> chunkedDTOList = ListUtil.partitionListIntoChunks(dtoList,chunkSize);
-
             for(List<VideoDataDTO> chunk:chunkedDTOList)
             {
                 System.out.println("sending "+chunk);
                 persistDTOs(chunk,receivedMessage.getVideoId());
             }
-
-
-
-           // videoService.saveVideoDataDTOS(dtoList);
-          //  persistDashFileDetails(dtoList);
-
             PipelineMessageFinalize<UUID> finalizeMessage = new PipelineMessageFinalize<>(videoID, config.dashQueue);
             sender.sendMessage(finalizeMessage, config.pipelineExchange, config.finalizeKey);
-
         });
+
 
         dashFuture.exceptionally((ex) -> {
             ex.printStackTrace();
@@ -234,15 +220,7 @@ public class Pipeline {
                 if (dtoList == null || dtoList.isEmpty()) {
                     throw new RuntimeException("Could not create MP4 files");
                 }
-
-
-
-
                 persistDTOs(dtoList,receivedMessage.getVideoId());
-
-
-
-
                 PipelineMessageFinalize<UUID> finalizeMessage = new PipelineMessageFinalize<>(videoID, config.mp4Queue);
                 sender.sendMessage(finalizeMessage, config.pipelineExchange, config.finalizeKey);
             } catch (Exception e) {
