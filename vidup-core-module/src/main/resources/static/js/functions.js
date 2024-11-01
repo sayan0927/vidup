@@ -1,26 +1,9 @@
+function goToLink(videoId) {
 
-function goToLink(videoId)
-{
-    console.log("going to"+videoId);
-    var link = "/videos/permitted/"+videoId+"/page/dash";
-    console.log(link);
+    var link = "/videos/permitted/" + videoId + "/page/dash";
+
     window.location.href = link;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function displaySubscriptionNotification(message) {
@@ -29,7 +12,7 @@ function displaySubscriptionNotification(message) {
     const first = msg[0];
     const uname = msg[1];
 
-    const img_src = "/profile_image_by_uname/"+uname;
+    const img_src = "/profile_image_by_uname/" + uname;
 
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
@@ -63,20 +46,15 @@ function displaySubscriptionNotification(message) {
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 1000);
 }
 
 
-
-function check(vid)
-{
+function check(vid) {
     var uid = document.getElementById('details').getAttribute('data-uid') || 'defaultValue';
     var session_token = document.getElementById('details').getAttribute('data-sessiontoken') || 'defaultValue';
 
-    console.log(uid);
-    console.log(session_token);
-    console.log(vid);
 }
 

@@ -1,23 +1,20 @@
-
 var currentUserId = document.getElementById('data').getAttribute('data-currentUserId') || 'defaultValue';
 var currentUserName = document.getElementById('data').getAttribute('data-currentUserName') || 'defaultValue';
 
 
-
 connect(); // Connect to WebSocket when the page loads
 
-function setNotificationAsSeen(notificationId,client)
-{
+function setNotificationAsSeen(notificationId, client) {
 
     console.log('Seen notification: ' + notificationId);
-    client.send("/app/notifications/set_seen/"+notificationId,{});
+    client.send("/app/notifications/set_seen/" + notificationId, {});
 }
 
 function subscribeToNotifications(client) {
     console.log("trying to sub  to notifications");
-    client.subscribe('/queue/notifications/'+currentUserId , function (message) {
+    client.subscribe('/queue/notifications/' + currentUserId, function (message) {
 
-        console.log(message.body.toString()+" received");
+        console.log(message.body.toString() + " received");
 
         const str = message.body.toString();
         const notification = JSON.parse(str);
@@ -25,26 +22,25 @@ function subscribeToNotifications(client) {
         const type = notification.type;
 
 
-        if(type==="subscribed_user_upload")
+        if (type === "subscribed_user_upload")
             displayUploadBySubscriberNotification(notification)
-        else if(type==="comment")
+        else if (type === "comment")
             displayCommentNotification(notification);
-        else if(type==="like" || type==="dislike")
+        else if (type === "like" || type === "dislike")
             displayLikeDislikeReaction(notification);
-        else if(type==="my_upload")
-        {
+        else if (type === "my_upload") {
             const options = notification.optionalMessage;
             const success = options['success'];
             console.log(options);
-            console.log("status: "+status.toString());
+            console.log("status: " + status.toString());
 
-            if(success===true)
+            if (success === true)
                 displaySuccessfulUploadNotification(notification);
             else
                 displayFailedUploadNotification(notification);
         }
 
-        setNotificationAsSeen(notification.notificationId,client);
+        setNotificationAsSeen(notification.notificationId, client);
     });
 }
 
@@ -54,19 +50,18 @@ function connect() {
     console.log('uid' + currentUserId + ' connected');
     var socket = new SockJS('/ws');
     const stompClient = Stomp.over(socket);
-    console.log(stompClient+' lala');
-    stompClient.connect({ 'userId': currentUserId }, function (frame) {
+    console.log(stompClient + ' lala');
+    stompClient.connect({'userId': currentUserId}, function (frame) {
         // stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         subscribeToNotifications(stompClient);
 
         //requesting notifications
-        stompClient.send("/app/notifications/pending/my",{});
+        stompClient.send("/app/notifications/pending/my", {});
     });
 }
 
-function displayFailedUploadNotification(notification)
-{
+function displayFailedUploadNotification(notification) {
     const nId = notification.notificationId;
 
 
@@ -74,18 +69,18 @@ function displayFailedUploadNotification(notification)
 
 
     const options = notification.optionalMessage;
-    console.log("options "+options);
+    console.log("options " + options);
     const vname = options['videoName'];
 
-    const img_src =    "/users/permitted/"+generatingUserName+"/profile_img_by_uname";
+    const img_src = "/users/permitted/" + generatingUserName + "/profile_img_by_uname";
     const type = notification.type;
-    const message =   "Your uploaded video " + vname;
+    const message = "Your uploaded video " + vname;
     const message2 = "Failed";
     const message3 = "due to error " + options['errormessage'];
 
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
-    toastDiv.id = 'toastNotification'+nId;
+    toastDiv.id = 'toastNotification' + nId;
     toastDiv.className = 'max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg fixed top-4 right-4'; // Add positioning classes
     toastDiv.setAttribute('role', 'alert');
 
@@ -134,13 +129,12 @@ function displayFailedUploadNotification(notification)
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 50000);
 }
 
-function displaySuccessfulUploadNotification(notification)
-{
+function displaySuccessfulUploadNotification(notification) {
     const nId = notification.notificationId;
 
 
@@ -148,17 +142,17 @@ function displaySuccessfulUploadNotification(notification)
 
 
     const options = notification.optionalMessage;
-    console.log("options "+options);
+    console.log("options " + options);
     const vname = options['videoName'];
 
-    const img_src =    "/users/permitted/"+generatingUserName+"/profile_img_by_uname";
+    const img_src = "/users/permitted/" + generatingUserName + "/profile_img_by_uname";
     const type = notification.type;
-    const message =   "Your uploaded video " + vname;
+    const message = "Your uploaded video " + vname;
     const message2 = "was successful";
 
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
-    toastDiv.id = 'toastNotification'+nId;
+    toastDiv.id = 'toastNotification' + nId;
     toastDiv.className = 'max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg fixed top-4 right-4'; // Add positioning classes
     toastDiv.setAttribute('role', 'alert');
 
@@ -203,18 +197,16 @@ function displaySuccessfulUploadNotification(notification)
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 50000);
 }
 
 
-function displayUploadBySubscriberNotification(message)
-{
+function displayUploadBySubscriberNotification(message) {
     const delim = "`";
     const parts = message.split(delim);
     const nId = parts[0];
-
 
 
     const generatingUserName = parts[1];
@@ -222,11 +214,11 @@ function displayUploadBySubscriberNotification(message)
     const type = parts[4]
     const vname = parts[5]
 
-    const img_src = "/users/"+generatingUserName+"/profile_img_by_uname";
+    const img_src = "/users/" + generatingUserName + "/profile_img_by_uname";
 
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
-    toastDiv.id = 'toastNotification'+nId;
+    toastDiv.id = 'toastNotification' + nId;
     toastDiv.className = 'max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg fixed top-4 right-4'; // Add positioning classes
     toastDiv.setAttribute('role', 'alert');
 
@@ -268,13 +260,10 @@ function displayUploadBySubscriberNotification(message)
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 50000);
 }
-
-
-
 
 
 function playNotificationSound() {
@@ -288,7 +277,7 @@ function playNotificationSound() {
 
 function closeToast(nId) {
     // Find the toast notification element
-    var toastDiv = document.getElementById('toastNotification'+nId);
+    var toastDiv = document.getElementById('toastNotification' + nId);
 
     // Remove the toast notification from the DOM
     if (toastDiv) {
@@ -296,8 +285,7 @@ function closeToast(nId) {
     }
 }
 
-function displayLikeDislikeReaction(notification)
-{
+function displayLikeDislikeReaction(notification) {
     const nId = notification.notificationId;
 
 
@@ -305,16 +293,16 @@ function displayLikeDislikeReaction(notification)
 
 
     const options = notification.optionalMessage;
-    console.log("options "+options);
+    console.log("options " + options);
     const vname = options['videoName'];
 
-    const img_src =    "/users/permitted/"+generatingUserName+"/profile_img_by_uname";
+    const img_src = "/users/permitted/" + generatingUserName + "/profile_img_by_uname";
     const type = notification.type;
-    const message =   type === "like" ?  "liked your video" : "disliked your video";
+    const message = type === "like" ? "liked your video" : "disliked your video";
 
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
-    toastDiv.id = 'toastNotification'+nId;
+    toastDiv.id = 'toastNotification' + nId;
     toastDiv.className = 'max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg fixed top-4 right-4'; // Add positioning classes
     toastDiv.setAttribute('role', 'alert');
 
@@ -355,13 +343,12 @@ function displayLikeDislikeReaction(notification)
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 50000);
 }
 
-function displayCommentNotification(notification)
-{
+function displayCommentNotification(notification) {
     const nId = notification.notificationId;
 
 
@@ -369,10 +356,10 @@ function displayCommentNotification(notification)
     const type = notification.type;
 
     const options = notification.optionalMessage;
-    console.log("options "+options);
+    console.log("options " + options);
     const vname = options['videoName'];
 
-    const img_src =    "/users/permitted/"+generatingUserName+"/profile_img_by_uname";
+    const img_src = "/users/permitted/" + generatingUserName + "/profile_img_by_uname";
     const message1 = "commented";
     const message2 = " on your video";
     const txt = options['commentText'];
@@ -380,7 +367,7 @@ function displayCommentNotification(notification)
     console.log(txt);
     // Create a new div element for the toast notification
     var toastDiv = document.createElement('notification_div');
-    toastDiv.id = 'toastNotification'+nId;
+    toastDiv.id = 'toastNotification' + nId;
     toastDiv.className = 'max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg fixed top-4 right-4'; // Add positioning classes
     toastDiv.setAttribute('role', 'alert');
 
@@ -433,7 +420,7 @@ function displayCommentNotification(notification)
     document.body.appendChild(toastDiv);
 
     // Remove the toast after a certain duration (e.g., 5 seconds)
-    setTimeout(function() {
+    setTimeout(function () {
         toastDiv.remove();
     }, 50000);
 }

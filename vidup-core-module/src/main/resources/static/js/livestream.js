@@ -1,10 +1,11 @@
-
 var currentUserId = document.getElementById('data').getAttribute('data-currentUserId') || 'defaultValue';
 var currentUserName = document.getElementById('data').getAttribute('data-currentUserName') || 'defaultValue';
 
-class recording{
-    constructor(){}
+class recording {
+    constructor() {
+    }
 }
+
 let recChunks = [];
 let mediaRecorder;
 let stream;
@@ -15,9 +16,9 @@ let recordingId = -1;
 function toggleRecordingModal() {
     const modal = document.getElementById('record_content');
 
-    const time  = new Date().getTime().toString();
+    const time = new Date().getTime().toString();
 
-    const rName = currentUserName+"-"+time;
+    const rName = currentUserName + "-" + time;
 
     // Toggle the 'hidden' class on the modal to show/hide it
     modal.classList.toggle('hidden');
@@ -27,17 +28,16 @@ function toggleRecordingModal() {
 
 }
 
-function setRecordingId()
-{
+function setRecordingId() {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/live_record/start');
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
     xhr.onload = function () {
 
-        if(xhr.readyState === 4 && xhr.status === 200 ) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             const recording = JSON.parse(xhr.responseText);
-            recordingId= recording.id;
+            recordingId = recording.id;
             console.log(JSON.parse(xhr.responseText));
         }
     };
@@ -52,18 +52,16 @@ async function startRecording() {
     setRecordingId();
 
     // Request access to webcam and microphone
-    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    stream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
 
     mediaRecorder = new MediaRecorder(stream, {
-        audioBitsPerSecond: 128000,
-        videoBitsPerSecond: 2500000,
-        mimeType: 'video/webm;codecs=vp8,opus'
+        audioBitsPerSecond: 128000, videoBitsPerSecond: 2500000, mimeType: 'video/webm;codecs=vp8,opus'
 
     });
     //Add to Buffer
-    mediaRecorder.ondataavailable = function(ev) {
+    mediaRecorder.ondataavailable = function (ev) {
         recChunks.push(ev.data);
-        console.log("added size"+ev.data.size);
+        console.log("added size" + ev.data.size);
     }
 
     mediaRecorder.start(50);  // Adjust time for smaller chunks if necessary
@@ -81,26 +79,24 @@ async function stopRecording() {
         tracks.forEach(track => track.stop());
     }
 
- //   await sendRecordingToServerInWhole();
+    //   await sendRecordingToServerInWhole();
     await sendRecordingToServerInChunks();
 
-   // location.reload();
+    // location.reload();
 
 }
 
-async function sendRecordingToServerInWhole()
-{
-    let blob = new Blob(recChunks, { 'type' : recChunks[0].type });
+async function sendRecordingToServerInWhole() {
+    let blob = new Blob(recChunks, {'type': recChunks[0].type});
     recChunks = [];
 
     const formData = new FormData();
     formData.append('chunk', blob);
-    formData.append('recording_id',recordingId.toString());
+    formData.append('recording_id', recordingId.toString());
 
     try {
         await fetch('/live_record/upload/whole', {
-            method: 'POST',
-            body: formData,
+            method: 'POST', body: formData,
 
         });
     } catch (error) {
@@ -108,24 +104,22 @@ async function sendRecordingToServerInWhole()
     }
 }
 
-async function sendRecordingToServerInChunks()
-{
-    for(let i=0;i<recChunks.length;i++){
+async function sendRecordingToServerInChunks() {
+    for (let i = 0; i < recChunks.length; i++) {
 
-        let arr=[];
+        let arr = [];
         arr.push(recChunks[i]);
-        let blob = new Blob(arr, { 'type' : recChunks[0].type });
+        let blob = new Blob(arr, {'type': recChunks[0].type});
         const formData = new FormData();
         formData.append('chunk', blob);
-        formData.append("chunk_id",i.toString());
-       // formData.append('recording_id',recordingId.toString());
+        formData.append("chunk_id", i.toString());
+        // formData.append('recording_id',recordingId.toString());
 
-        console.log("sending chunk "+i+" with size"+blob.size);
+        console.log("sending chunk " + i + " with size" + blob.size);
 
         try {
-            await fetch('/live_record/upload/chunk/'+recordingId, {
-                method: 'POST',
-                body: formData,
+            await fetch('/live_record/upload/chunk/' + recordingId, {
+                method: 'POST', body: formData,
 
             });
         } catch (error) {
@@ -138,10 +132,9 @@ async function sendRecordingToServerInChunks()
     recChunks = [];
 }
 
-async function markUploadComplete(id)
-{
+async function markUploadComplete(id) {
     try {
-        await fetch('/live_record/upload/complete/'+id, {
+        await fetch('/live_record/upload/complete/' + id, {
             method: 'POST',
 
 

@@ -1,4 +1,3 @@
-
 var order = document.getElementById('details').getAttribute('data-view_order') || 'defaultValue';
 
 order = order.replace("[", "");
@@ -21,8 +20,7 @@ for (let i = 0; i < n; i++) {
 
 }
 
-function deleteVideoFromPlaylist(videoId,playlistId)
-{
+function deleteVideoFromPlaylist(videoId, playlistId) {
     console.log(playlistId);
     console.log(videoId);
 

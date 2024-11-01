@@ -1,11 +1,9 @@
-
-function addVideoToPlaylist(videoId)
-{
+function addVideoToPlaylist(videoId) {
     const playListId = document.getElementById('playlist_id_select').value;
 
     console.log("to playlist " + playListId);
 
-    const url = "/playlists/"+playListId+"/add/"+videoId;
+    const url = "/playlists/" + playListId + "/add/" + videoId;
     var xhr = new XMLHttpRequest();
     xhr.open('PUT', url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -28,38 +26,31 @@ function addVideoToPlaylist(videoId)
 
 }
 
-async function handleSubscribe(creatorId)
-{
-    console.log("creatorId " + creatorId);
-    var subscribedPrev = await subscribedAlready(creatorId);
-    console.log(subscribedPrev);
-    if(subscribedPrev==null)
-        return;
+async function handleSubscribe(creatorId) {
 
-    if(subscribedPrev)
-        unsubscribe(creatorId);
-    else
-        subscribe(creatorId);
+    var subscribedPrev = await subscribedAlready(creatorId);
+
+    if (subscribedPrev == null) return;
+
+    if (subscribedPrev) unsubscribe(creatorId); else subscribe(creatorId);
 
 }
 
-function downloadVideo(videoId)
-{
-    const url = "/videos/"+videoId+"/download";
+function downloadVideo(videoId) {
+    const url = "/videos/" + videoId + "/download";
     window.open(url, "_blank");
 
 }
 
-function unsubscribe(creatorId)
-{
-    const url = "/subscriptions/unsubscribe/"+creatorId;
+function unsubscribe(creatorId) {
+    const url = "/subscriptions/unsubscribe/" + creatorId;
     var xhr = new XMLHttpRequest();
-    xhr.open('DELETE',url,true);
+    xhr.open('DELETE', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
     xhr.onload = function () {
 
-        if(xhr.readyState === 4 && xhr.status === 200 ) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             alert("You Unsubscribed From This User");
         }
     };
@@ -67,24 +58,19 @@ function unsubscribe(creatorId)
     xhr.send();
 }
 
-function subscribe(creatorId)
-{
-    const url = "/subscriptions/subscribe/"+creatorId;
+function subscribe(creatorId) {
+    const url = "/subscriptions/subscribe/" + creatorId;
     var xhr = new XMLHttpRequest();
-    xhr.open('POST',url,true);
+    xhr.open('POST', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
     xhr.onreadystatechange = function () {
 
-        if(xhr.readyState === 4 && xhr.status === 200 ) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             alert("Subscribed successfully");
-        }
-        else if(xhr.readyState === 4 && xhr.status === 406)
-        {
+        } else if (xhr.readyState === 4 && xhr.status === 406) {
             alert(xhr.responseText);
-        }
-        else if(xhr.readyState ===4 && xhr.status===401)
-        {
+        } else if (xhr.readyState === 4 && xhr.status === 401) {
             alert("Please Login First");
         }
 
@@ -93,36 +79,25 @@ function subscribe(creatorId)
     xhr.send();
 }
 
-function subscribedAlready(creatorId)
-{
-    const url = "/subscriptions/subscribed_prev/"+creatorId;
+function subscribedAlready(creatorId) {
+    const url = "/subscriptions/subscribed_prev/" + creatorId;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     console.log("fks")
     xhr.onload = function () {
 
-        if(xhr.readyState===4)
-        {
-            if(xhr.status === 200)
-            {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
                 var subscribedPrev = JSON.parse(xhr.responseText);
-                if(!subscribedPrev)
-                    subscribe(creatorId);
-                else
-                    unsubscribe(creatorId);
-            }
-            else if(xhr.status===401)
-            {
+                if (!subscribedPrev) subscribe(creatorId); else unsubscribe(creatorId);
+            } else if (xhr.status === 401) {
                 alert("Please Login First");
             }
 
-        }
-        else
-            return null;
+        } else return null;
     };
     xhr.send();
 }
-
 
 
 // Function to populate select element with playlistNames
@@ -148,7 +123,7 @@ function fetchPlayLists() {
         const url = "/playlists/my";
         xhr.open('GET', url, true);
 
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
 
                 const playlistsJSon = JSON.parse(xhr.responseText);
@@ -159,7 +134,7 @@ function fetchPlayLists() {
             }
         };
 
-        xhr.onerror = function() {
+        xhr.onerror = function () {
             reject(new Error('Request failed'));
         };
 
@@ -174,10 +149,10 @@ function extractIdentifierFromPlaylists(playlists) {
 
         console.log(playlistDTO);
         const playlist = playlistDTO.playlist;
-        identifierSet.add(playlist.id+'-'+playlist.name);
+        identifierSet.add(playlist.id + '-' + playlist.name);
         if (playlist.name) {
 
-           // identifierSet.add(playlist.id+'-'+playlist.name);
+            // identifierSet.add(playlist.id+'-'+playlist.name);
         }
     });
     return Array.from(identifierSet); // Convert Set back to Array
@@ -200,7 +175,7 @@ function toggleAddPlaylistModal() {
             populateSelectElement(selectElement, playlists);
 
             // Add event listener to select element to check selected value
-            selectElement.addEventListener('change', function() {
+            selectElement.addEventListener('change', function () {
                 // Disable add button if selected value is empty, otherwise enable it
                 addButton.disabled = selectElement.value === '';
             });
@@ -218,7 +193,7 @@ function reportVideo(videoId) {
     console.log("doing things");
     console.log(videoId);
 
-    const url = "/videos/"+videoId+"/report";
+    const url = "/videos/" + videoId + "/report";
     var params = "";
 
     console.log(url);
@@ -235,7 +210,7 @@ function reportVideo(videoId) {
             if (xhr.status === 200) {
                 console.log("Video reported successfully:", xhr.responseText);
                 alert("Video Has Been Reported Successfully");
-            } else if(xhr.status===401){
+            } else if (xhr.status === 401) {
                 alert("Please Login First");
             }
         }
@@ -255,38 +230,35 @@ function changeLanguage(videoId) {
     var lang = e.options[e.selectedIndex].value;
 
 
-    let new_src = "http://"+url+"/"+videoId+"/"+lang+"/"+session_token+"/"+uid;
+    let new_src = "http://" + url + "/" + videoId + "/" + lang + "/" + session_token + "/" + uid;
 
-    console.log(new_src+ " src is");
+    console.log(new_src + " src is");
 
     console.log(videoId);
 
     var videoElements = document.querySelectorAll('.video-js');
-    console.log("ele are "+videoElements.length);
+    console.log("ele are " + videoElements.length);
     var target;
     // Loop through each video element
-    videoElements.forEach(function(videoElement)
-    {
+    videoElements.forEach(function (videoElement) {
         // Get the Video.js player instance associated with the video element
         console.log(videoElement);
         var player = videojs(videoElement.id);
-        if(player.id() == videoId)
-        {
+        if (player.id() == videoId) {
             target = player;
         }
     });
 
     var currTime = target.currentTime();
-    target.src({ type: "video/mp4", src: new_src });
+    target.src({type: "video/mp4", src: new_src});
     target.currentTime(currTime);
 }
 
-function postComment(videoId)
-{
+function postComment(videoId) {
     console.log("doing things");
     var commentText = document.getElementById("commentBox").value;
-    const url = "/videos/"+videoId+"/comment";
-    var params=commentText;
+    const url = "/videos/" + videoId + "/comment";
+    var params = commentText;
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
@@ -320,23 +292,21 @@ function convertLocalDateTime(localDateTimeString) {
     const year = String(date.getFullYear()).slice(-2);
 
     // Month names
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const month = monthNames[date.getMonth()];
 
     // Format as dd/Mon/yy
     return `${day}/${month}/${year}`;
 }
 
-function updateCommentsDisplay(newComment)
-{
+function updateCommentsDisplay(newComment) {
     console.log("cmtsdisplay");
     console.log(newComment);
     var newCommentHTML = document.createElement('div');
     var cmtDate = newComment.commentDateTime
     var formattedDate = convertLocalDateTime(cmtDate);
     var img_src = "/users/permitted/" + newComment.commenter.id + "/profile_img";
-    console.log(img_src+" src");
+    console.log(img_src + " src");
 
     console.log((formattedDate));
 
@@ -372,23 +342,20 @@ function updateCommentsDisplay(newComment)
 
 function handleLike(videoId) {
 
-    const checkUrl = "/videos/"+videoId+"/reactions/liked_prev";
+    const checkUrl = "/videos/" + videoId + "/reactions/liked_prev";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', checkUrl, true);
 
 
     xhr.onload = function () {
 
-        if (xhr.readyState===4) {
-            if(xhr.status === 200) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
                 {
                     var likedAlready = JSON.parse(xhr.responseText);
-                    if (!likedAlready)
-                        reactOnVideo("like",videoId,'POST'); else reactOnVideo("neutral",videoId,'PUT');
+                    if (!likedAlready) reactOnVideo("like", videoId, 'POST'); else reactOnVideo("neutral", videoId, 'PUT');
                 }
-            }
-            else if(xhr.status===401)
-            {
+            } else if (xhr.status === 401) {
                 alert("Please Login First");
             }
 
@@ -402,7 +369,7 @@ function handleLike(videoId) {
 
 function handleDislike(videoId) {
 
-    const checkUrl = "/videos/"+videoId+"/reactions/disliked_prev";
+    const checkUrl = "/videos/" + videoId + "/reactions/disliked_prev";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', checkUrl, true);
 
@@ -411,18 +378,14 @@ function handleDislike(videoId) {
         console.log(xhr.readyState + " " + xhr.status + " " + xhr.responseText + " kak");
 
 
-        if(xhr.readyState===4)
-        {
-            if(xhr.status === 200) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
                 var dislikedAlready = JSON.parse(xhr.responseText);
-                if (!dislikedAlready) reactOnVideo("dislike",videoId,'POST'); else reactOnVideo("neutral",videoId,'PUT');
-            }
-            else if(xhr.status===401)
-            {
+                if (!dislikedAlready) reactOnVideo("dislike", videoId, 'POST'); else reactOnVideo("neutral", videoId, 'PUT');
+            } else if (xhr.status === 401) {
                 alert("Please Login First");
             }
         }
-
 
 
     };
@@ -430,40 +393,33 @@ function handleDislike(videoId) {
 }
 
 
+function reactOnVideo(reaction, videoId, method) {
 
+    const url = "/videos/" + videoId + "/reactions/react/" + reaction;
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
+    var resp;
 
-
-
-function reactOnVideo(reaction,videoId,method)
-{
-
-        const url = "/videos/"+videoId+"/reactions/react/"+reaction;
-        var xhr = new XMLHttpRequest();
-        xhr.open(method, url, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-
-        var resp;
-
-        xhr.onreadystatechange = function () {
-            console.log(xhr.readyState + " " + xhr.status + " " + xhr.responseText);
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    updateLikeAndDislikeButtonCount(videoId);
-                } else {
-                    console.log("Failed to Like:", xhr.status, xhr.statusText);
-                }
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState + " " + xhr.status + " " + xhr.responseText);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                updateLikeAndDislikeButtonCount(videoId);
+            } else {
+                console.log("Failed to Like:", xhr.status, xhr.statusText);
             }
-        };
-        xhr.send();
+        }
+    };
+    xhr.send();
 
 }
 
 
-
 function likeVideo(videoId) {
-    const likeUrl = "/videos/"+videoId+"/reactions/react/like/";
+    const likeUrl = "/videos/" + videoId + "/reactions/react/like/";
     var xhrLike = new XMLHttpRequest();
     xhrLike.open('POST', likeUrl, true);
     xhrLike.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -488,7 +444,7 @@ function likeVideo(videoId) {
 function updateLikeAndDislikeButtonCount(videoId) {
 
     console.log("will update");
-    const url = "/videos/"+videoId+"/reactions/count";
+    const url = "/videos/" + videoId + "/reactions/count";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
 

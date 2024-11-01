@@ -1,10 +1,5 @@
-
-
-
-
-function dismissReport(videoId)
-{
-    const url = "/admin/reported/" + videoId +"/dismiss";
+function dismissReport(videoId) {
+    const url = "/admin/reported/" + videoId + "/dismiss";
     var xhr = new XMLHttpRequest();
     xhr.open('DELETE', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
@@ -26,9 +21,8 @@ function dismissReport(videoId)
     xhr.send();
 }
 
-function deleteVideo(videoId)
-{
-    const url = "/videos/"+videoId+"/delete";
+function deleteVideo(videoId) {
+    const url = "/videos/" + videoId + "/delete";
     var xhr = new XMLHttpRequest();
     xhr.open('DELETE', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");

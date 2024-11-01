@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/rabbitmq_pipeline/Pipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/rabbitmq_pipeline/Pipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/all_playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/all_playlists.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/all_videos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/all_videos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/controlbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/controlbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/creative_centre.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/creative_centre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/dash_player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/dash_player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/highlighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/highlighter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/livestream.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/livestream.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/playlist_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/playlist_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/require.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/require.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/subscriptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/subscriptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/video_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/video_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash-hls-bitrate-switcher-debug.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash-hls-bitrate-switcher-debug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vjs_dash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vjs_dash.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,6 +268,7 @@
       <workItem from="1730305387430" duration="521000" />
       <workItem from="1730393244261" duration="987000" />
       <workItem from="1730395852333" duration="1173000" />
+      <workItem from="1730442242265" duration="209000" />
     </task>
     <servers />
   </component>

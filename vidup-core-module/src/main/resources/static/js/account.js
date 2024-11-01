@@ -1,5 +1,4 @@
-function updateUser()
-{
+function updateUser() {
     const form = document.getElementById('update_user_form');
     const formData = new FormData(form);
 
@@ -7,7 +6,6 @@ function updateUser()
 
     const url = "/users/update";
     const xhr = new XMLHttpRequest();
-
 
 
     const password = formData.get('password');
@@ -24,14 +22,13 @@ function updateUser()
     }
 
     const email = formData.get('email');
-    if(email && !validEmail(email))
-    {
+    if (email && !validEmail(email)) {
         alert("Invalid email address");
         return false;
     }
 
 
-    xhr.open('PUT',url,true);
+    xhr.open('PUT', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.setRequestHeader("enctype", "multipart/form-data");
 
@@ -39,16 +36,15 @@ function updateUser()
     xhr.onreadystatechange = function () {
 
         console.log("xhr");
-        if(xhr.readyState === 4) {
+        if (xhr.readyState === 4) {
             console.log(xhr.status);
             console.log(xhr.responseText);
 
-            if(xhr.status === 200)
-            {
+            if (xhr.status === 200) {
                 alert("Profile Updated");
                 location.reload();
             }
-            if(xhr.status === 409 || xhr.status === 400 || xhr.status === 500) {
+            if (xhr.status === 409 || xhr.status === 400 || xhr.status === 500) {
                 alert(xhr.responseText);
             }
         }
@@ -58,10 +54,8 @@ function updateUser()
     xhr.send(formData);
 }
 
-function validEmail(email)
-{
-    const emailPattern =
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+function validEmail(email) {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const isValid = emailPattern.test(email);
     console.log(isValid);
     return isValid;

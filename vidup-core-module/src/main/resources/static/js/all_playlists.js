@@ -1,7 +1,5 @@
-
-function deletePlaylist(playlistId)
-{
-    console.log("will delelte "+playlistId);
+function deletePlaylist(playlistId) {
+    console.log("will delelte " + playlistId);
 
 
     const url = "/playlists/" + playlistId + "/delete";
@@ -27,16 +25,13 @@ function deletePlaylist(playlistId)
 
 }
 
-function validPlayListName(pname)
-{
-    return (!(pname=='' || pname==""))
+function validPlayListName(pname) {
+    return (!(pname == '' || pname == ""))
 }
 
-function createPlaylist()
-{
+function createPlaylist() {
     const playlistName = document.getElementById('pname').value;
-    if(!validPlayListName(playlistName))
-    {
+    if (!validPlayListName(playlistName)) {
         console.log("playlist name error");
         alert("Invalid playlist name");
         return;
@@ -67,8 +62,7 @@ function createPlaylist()
     xhr.send(params);
 }
 
-function toggleCreatePlaylistModal()
-{
+function toggleCreatePlaylistModal() {
     const modal = document.getElementById('create_playlist');
     // Toggle the 'hidden' class on the modal to show/hide it
     modal.classList.toggle('hidden');

@@ -44,9 +44,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
     var bitrateListMenu = null;
     var trackSwitchMenu = null;
     var menuHandlersList = {
-        bitrate: null,
-        caption: null,
-        track: null
+        bitrate: null, caption: null, track: null
     };
     var lastVolumeLevel = NaN;
     var seeking = false;
@@ -54,26 +52,9 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
     var liveThresholdSecs = 1;
     var textTrackList = {};
     var forceQuality = false;
-    var video,
-        videoContainer,
-        videoController,
-        playPauseBtn,
-        bitrateListBtn,
-        captionBtn,
-        trackSwitchBtn,
-        seekbar,
-        seekbarPlay,
-        seekbarBuffer,
-        muteBtn,
-        volumebar,
-        fullscreenBtn,
-        timeDisplay,
-        durationDisplay,
-        thumbnailContainer,
-        thumbnailElem,
-        thumbnailTimeLabel,
-        idSuffix,
-        seekbarBufferInterval;
+    var video, videoContainer, videoController, playPauseBtn, bitrateListBtn, captionBtn, trackSwitchBtn, seekbar,
+        seekbarPlay, seekbarBuffer, muteBtn, volumebar, fullscreenBtn, timeDisplay, durationDisplay, thumbnailContainer,
+        thumbnailElem, thumbnailTimeLabel, idSuffix, seekbarBufferInterval;
 
     //************************************************************************************
     // THUMBNAIL CONSTANTS
@@ -154,16 +135,16 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
     var setPlayBtn = function () {
         var span = document.getElementById(getControlId('iconPlayPause'));
         if (span !== null) {
-            span.classList.remove('fa-solid','fa-pause');
-            span.classList.add('fa-solid','fa-play');
+            span.classList.remove('fa-solid', 'fa-pause');
+            span.classList.add('fa-solid', 'fa-play');
         }
     };
 
     var setPauseBtn = function () {
         var span = document.getElementById(getControlId('iconPlayPause'));
         if (span !== null) {
-            span.classList.remove('fa-solid','fa-play');
-            span.classList.add('fa-solid','fa-pause');
+            span.classList.remove('fa-solid', 'fa-play');
+            span.classList.add('fa-solid', 'fa-pause');
         }
     };
 
@@ -339,8 +320,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
                 thumbnailContainer.style.bottom += Math.round(videoControllerRect.height + bottomMarginThumbnail) + 'px';
                 thumbnailContainer.style.height = Math.round(thumbnail.height) + 'px';
 
-                var backgroundStyle = 'url("' + thumbnail.url + '") ' + (thumbnail.x > 0 ? '-' + thumbnail.x : '0') +
-                    'px ' + (thumbnail.y > 0 ? '-' + thumbnail.y : '0') + 'px';
+                var backgroundStyle = 'url("' + thumbnail.url + '") ' + (thumbnail.x > 0 ? '-' + thumbnail.x : '0') + 'px ' + (thumbnail.y > 0 ? '-' + thumbnail.y : '0') + 'px';
                 thumbnailElem.style.background = backgroundStyle;
                 thumbnailElem.style.width = thumbnail.width + 'px';
                 thumbnailElem.style.height = thumbnail.height + 'px';
@@ -528,7 +508,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
         if (bitrateListBtn) {
             destroyMenu(bitrateListMenu, bitrateListBtn, menuHandlersList.bitrate);
             bitrateListMenu = null;
-            var availableBitrates = { menuType: 'bitrate' };
+            var availableBitrates = {menuType: 'bitrate'};
             availableBitrates.audio = self.player.getBitrateInfoListFor && self.player.getBitrateInfoListFor('audio') || [];
             availableBitrates.video = self.player.getBitrateInfoListFor && self.player.getBitrateInfoListFor('video') || [];
             availableBitrates.images = self.player.getBitrateInfoListFor && self.player.getBitrateInfoListFor('image') || [];
@@ -562,7 +542,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
             destroyMenu(trackSwitchMenu, trackSwitchBtn, menuHandlersList.track);
             trackSwitchMenu = null;
 
-            var availableTracks = { menuType: 'track' };
+            var availableTracks = {menuType: 'track'};
             availableTracks.audio = self.player.getTracksFor('audio');
             availableTracks.video = self.player.getTracksFor('video'); // these return empty arrays so no need to check for null
 
@@ -620,7 +600,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
 
                 return element.lang + ' : ' + element.kind;
             };
-            captionMenu = createMenu({ menuType: 'caption', arr: tracks }, contentFunc);
+            captionMenu = createMenu({menuType: 'caption', arr: tracks}, contentFunc);
 
             var func = function () {
                 onMenuClick(captionMenu, captionBtn);
@@ -902,7 +882,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
 
         var element = document.querySelector('video');
         var rect = element.getBoundingClientRect();
-        console.log(rect.top, rect.right, rect.bottom, rect.left+" kaka");
+        console.log(rect.top, rect.right, rect.bottom, rect.left + " kaka");
 
         if (element.offsetLeft + menu.clientWidth >= videoController.clientWidth) {
             menu.style.right = '50px';
@@ -914,7 +894,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
             console.log("b")
         }
 
-        console.log(menu.style,"  c")
+        console.log(menu.style, "  c")
         var menu_y = videoController.offsetTop - menu.offsetHeight;
         menu.style.top = menu_y + 'px';
 
@@ -922,24 +902,23 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
     };
 
 
+    /* var positionMenu = function (menu, btn) {
+         // Get the video element
+         var videoElement = document.querySelector('video');
 
-   /* var positionMenu = function (menu, btn) {
-        // Get the video element
-        var videoElement = document.querySelector('video');
+         // Calculate the right position
+         var videoRightEdge = videoElement.offsetLeft + videoElement.clientWidth;
+         var rect = videoElement.getBoundingClientRect();
+         console.log(videoElement.offsetLeft +" uio"+ videoElement.clientWidth+"  "+rect)
+         console.log(rect.top, rect.right, rect.bottom, rect.left," kaka");
+         menu.style.left = (videoRightEdge - menu.clientWidth) + 'px';
 
-        // Calculate the right position
-        var videoRightEdge = videoElement.offsetLeft + videoElement.clientWidth;
-        var rect = videoElement.getBoundingClientRect();
-        console.log(videoElement.offsetLeft +" uio"+ videoElement.clientWidth+"  "+rect)
-        console.log(rect.top, rect.right, rect.bottom, rect.left," kaka");
-        menu.style.left = (videoRightEdge - menu.clientWidth) + 'px';
+         // Calculate the top position
+         var menu_y = videoElement.offsetTop - menu.offsetHeight;
+         menu.style.top = menu_y + 'px';
+     };
 
-        // Calculate the top position
-        var menu_y = videoElement.offsetTop - menu.offsetHeight;
-        menu.style.top = menu_y + 'px';
-    };
-
-    */
+     */
 
 
     var destroyMenu = function (menu, btn, handler) {
@@ -1000,11 +979,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
     //************************************************************************************
 
     return {
-        setVolume: setVolume,
-        setDuration: setDuration,
-        setTime: setTime,
-        setPlayer: setPlayer,
-        removeMenu: removeMenu,
+        setVolume: setVolume, setDuration: setDuration, setTime: setTime, setPlayer: setPlayer, removeMenu: removeMenu,
 
         initialize: function (suffix) {
 
@@ -1033,7 +1008,7 @@ var ControlBar = function (dashjsMediaPlayer, displayUTCTimeCodes) {
             seekbar.addEventListener('mousedown', onSeeking, true);
             seekbar.addEventListener('mousemove', onSeekBarMouseMove, true);
             // set passive to true for scroll blocking listeners (https://www.chromestatus.com/feature/5745543795965952)
-            seekbar.addEventListener('touchmove', onSeekBarMouseMove, { passive: true });
+            seekbar.addEventListener('touchmove', onSeekBarMouseMove, {passive: true});
             seekbar.addEventListener('mouseout', onSeekBarMouseMoveOut, true);
             seekbar.addEventListener('touchcancel', onSeekBarMouseMoveOut, true);
             seekbar.addEventListener('touchend', onSeekBarMouseMoveOut, true);

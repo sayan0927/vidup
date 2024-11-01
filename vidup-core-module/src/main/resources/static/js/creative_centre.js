@@ -1,8 +1,6 @@
 var currentUserId = document.getElementById('data').getAttribute('data-currentUserId') || 'defaultValue';
 
 
-
-
 function main() {
     document.addEventListener('DOMContentLoaded', function () {
         const fileInput = document.getElementById('file');
@@ -36,9 +34,7 @@ function main() {
 main();
 
 
-
-function uploadVideo()
-{
+function uploadVideo() {
     const form = document.getElementById('video_upload_form');
     const formData = new FormData(form);
 
@@ -48,36 +44,31 @@ function uploadVideo()
 
     console.log(formData)
 
-    if (!fileInput.files.length || !videoNameInput.value)
-    {
+    if (!fileInput.files.length || !videoNameInput.value) {
         alert('Please select a video file and enter a video name.');
         return;
     }
 
     // Create XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-   // const url = "http://localhost:8000/videos/upload";
+    // const url = "http://localhost:8000/videos/upload";
 
     const url = "/videos/upload";
 
-    console.log("url "+url);
+    console.log("url " + url);
     xhr.open('POST', url, true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.setRequestHeader("enctype", "multipart/form-data");
     console.log("uploading");
     // Set up a handler for when the request finishes
     xhr.onreadystatechange = function () {
-        console.log(xhr.readyState,xhr.status + " " + xhr.statusText);
+        console.log(xhr.readyState, xhr.status + " " + xhr.statusText);
 
-        if(xhr.readyState === 4)
-        {
-            if(xhr.status === 200 || xhr.status === 201)
-            {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200 || xhr.status === 201) {
                 alert('Video Was Uploaded.\n You Will be Notified after Video is processed and made ready');
-               // location.reload();
-            }
-            else
-                alert('An error occurred during the video upload. Please try again.');
+                // location.reload();
+            } else alert('An error occurred during the video upload. Please try again.');
         }
     };
 

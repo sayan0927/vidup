@@ -1,6 +1,3 @@
-
-
-
 var videoId = document.getElementById('data').getAttribute('data-videoId') || 'defaultValue';
 var userId = document.getElementById('data').getAttribute('data-currentUserId') || 'defaultValue'
 
@@ -17,11 +14,10 @@ function start() {
     var videoElement = document.querySelector('video');
 
 
-    var player = videojs(videoElement,{
+    var player = videojs(videoElement, {
         html5: {
             dash: {
-                setLimitBitrateByPortal:false,
-                setMaxAllowedBitrateFor: ['video', 2000],
+                setLimitBitrateByPortal: false, setMaxAllowedBitrateFor: ['video', 2000],
 
             }
         }

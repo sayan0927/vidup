@@ -22,10 +22,9 @@ function calculateStartingWhitespacesCount(html) {
 }
 
 function waitForElement() {
-    if (typeof hljs !== 'undefined'){
+    if (typeof hljs !== 'undefined') {
         hljs.initHighlighting();
-    }
-    else {
+    } else {
         setTimeout(waitForElement, 100);
     }
 }
@@ -52,7 +51,7 @@ function copyToClipboard() {
     }
 
     document.getElementById('clipboard-copy').innerText = 'Copied!';
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById('clipboard-copy').innerText = 'Copy to clipboard';
     }, 2000);
 }

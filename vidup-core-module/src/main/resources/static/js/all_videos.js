@@ -2,42 +2,41 @@ var stompClient = null;
 
 function connect() {
 
-    console.log('uid' + currentUserId + ' connected');
+
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
 
     stompClient.connect({}, function (frame) {
         // stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
+
         subscribeToNotifications();
 
         //requesting notifications
-        stompClient.send("/app/notifications/pending/my",{});
+        stompClient.send("/app/notifications/pending/my", {});
     });
 }
 
 
-function handleSearch()
-{
-    console.log("handlind");
+function handleSearch() {
+
 
     const form = document.getElementById('search_form');
     const formData = new FormData(form);
 
-    console.log(formData);
+
 
     const url = new URL("/videos/search");
-    url.searchParams.append("search_key",formData.get('search_key'));
+    url.searchParams.append("search_key", formData.get('search_key'));
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 
     xhr.onload = function () {
 
-        if(xhr.readyState === 4) {
-            if(xhr.status === 200) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
                 var dto = JSON.parse(xhr.responseText);
-                console.log(dto);
+
 
                 removeAllPlayers();
                 fillVideoContainerWithVideos(dto);
@@ -47,25 +46,23 @@ function handleSearch()
     xhr.send(formData);
 }
 
-function fillVideoContainerWithVideos(dto)
-{
+function fillVideoContainerWithVideos(dto) {
     var url = document.getElementById('data').getAttribute('data-source_url') || 'defaultValue';
-   // url ='ginglob';
+    // url ='ginglob';
     const token = document.getElementById('data').getAttribute('data-session_token') || 'defaultValue';
     var uid = document.getElementById('data').getAttribute('data-currentUserId') || 'defaultValue';
 
     const greet = function greet() {
-        console.log('Hey there clicker!');
+
     }
-    console.log(dto);
+
     const videoContainer = document.getElementById('video_container');
     dto.forEach(videoDto => {
-        console.log(url," is");
+
         const videoItem = document.createElement('div');
-   //     videoItem.className = 'video-link-small video-item';
+        //     videoItem.className = 'video-link-small video-item';
         const video = videoDto.video;
         videoItem.id = `player${video.id}`;
-
 
 
         videoItem.innerHTML = `
@@ -104,52 +101,48 @@ function fillVideoContainerWithVideos(dto)
 
         videoContainer.append(videoItem);
         let player = document.getElementById(video.id);
-        player.addEventListener("click",function(){
-            console.log("ylf");
+        player.addEventListener("click", function () {
+
         });
-        console.log(player);
+
 
 
     });
 
     var videoDivs = document.querySelectorAll('.custom-small-video-player');
-    videoDivs.forEach(function(div) {
-        var player =  document.getElementById(div.id);
-
+    videoDivs.forEach(function (div) {
+        var player = document.getElementById(div.id);
 
 
     });
-   // displayPlayers();
+    // displayPlayers();
 
 }
 
-function removeAllPlayers()
-{
+function removeAllPlayers() {
     const videoContainer = document.getElementById('video_container');
     videoContainer.innerHTML = ''; // C
 }
 
-function displayPlayers()
-{
+function displayPlayers() {
     var videoDivs = document.querySelectorAll('.custom-small-video-player');
-    videoDivs.forEach(function(div) {
-        var player =  document.getElementById(div.id);
-        console.log(player);
+    videoDivs.forEach(function (div) {
+        var player = document.getElementById(div.id);
+
     });
 }
 
-function handleTagsSelected()
-{
+function handleTagsSelected() {
     displayPlayers();
     const selectElement = document.getElementById("tags");
 
-    var player = document.getElementById('player'+451);
+    var player = document.getElementById('player' + 451);
 
     const selectedOptions = Array.from(selectElement.selectedOptions);
     //const selectedTags = selectedOptions.map(option => option.text);
     const selectedTagsId = selectedOptions.map(option => option.value);
 
-    if(selectedTagsId.length ===1 && selectedTagsId[0] === 'all'){
+    if (selectedTagsId.length === 1 && selectedTagsId[0] === 'all') {
 
         showAllPlayers();
         return;
@@ -168,12 +161,11 @@ function handleTagsSelected()
 
     xhr.open("GET", url, true);
 
-    xhr.onload = function() {
+    xhr.onload = function () {
 
-        if(xhr.readyState === 4) {
+        if (xhr.readyState === 4) {
 
-            if(xhr.status===200)
-            {
+            if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
 
                 console.log(response);
@@ -188,37 +180,30 @@ function handleTagsSelected()
 
 }
 
-function showAllPlayers()
-{
+function showAllPlayers() {
     var videoDivs = document.querySelectorAll('.video-item');
-    videoDivs.forEach(function(div) {
-        var player =  document.getElementById(div.id);
-        player.hidden=false;
+    videoDivs.forEach(function (div) {
+        var player = document.getElementById(div.id);
+        player.hidden = false;
     });
 }
 
 
-
-function hideAllPlayers()
-{
+function hideAllPlayers() {
     var videoDivs = document.querySelectorAll('.video-item');
-    videoDivs.forEach(function(div) {
-        var player =  document.getElementById(div.id);
-        player.hidden=true;
+    videoDivs.forEach(function (div) {
+        var player = document.getElementById(div.id);
+        player.hidden = true;
     });
 }
 
-function showPlayersForVideos(videoDTOlist)
-{
+function showPlayersForVideos(videoDTOlist) {
 
 
-
-
-    for(var i = 0; i < videoDTOlist.length; i++)
-    {
+    for (var i = 0; i < videoDTOlist.length; i++) {
         const vid = videoDTOlist[i].video.id;
 
-        var player = document.getElementById('player'+vid);
-        player.hidden=false;
+        var player = document.getElementById('player' + vid);
+        player.hidden = false;
     }
 }
