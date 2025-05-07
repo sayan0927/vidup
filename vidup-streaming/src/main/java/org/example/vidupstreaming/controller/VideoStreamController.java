@@ -34,16 +34,10 @@ public class VideoStreamController {
     Executor defaultExecutor = Executors.newVirtualThreadPerTaskExecutor();
 
     @Autowired
-    VideoStreamService videoStreamService;
-
-    @Autowired
-    VideoDataMp4Repository mp4Repository;
-
-    @Autowired
     VideoService videoService;
 
     @Autowired
-    StorageProperties storageProperties = new StorageProperties();
+    StorageProperties storageProperties;
 
     @Autowired
     StreamingApplicationConstants constants;
@@ -58,8 +52,6 @@ public class VideoStreamController {
         URL manifestLocation = manifest.getLocation();
         try {
             String protocol = manifestLocation.getProtocol();
-            System.out.println("\nprotocol is\n" + protocol);
-
             byte[] bytes = storageProperties.getStorageService(protocol).readFileAsBytes(manifestLocation).get();
 
             return new ResponseEntity<>(bytes, HttpStatus.OK);
@@ -73,26 +65,27 @@ public class VideoStreamController {
     @GetMapping("/stream/dash/{videoId}/{chunkName}")
     public CompletableFuture<ResponseEntity<?>> getDashChunk(@PathVariable("videoId") String videoId, @PathVariable(value = "chunkName", required = false) String chunkName) {
 
+        URL url = videoService.getBaseLocation(UUID.fromString(videoId),chunkName);
+        CompletableFuture<ResponseEntity<?>> response = new CompletableFuture<>();
 
-        CompletableFuture<VideoDataDashSegment> dashFuture = videoService.getDashSegmentOfVideoFuture(UUID.fromString(videoId), chunkName);
+        try {
+            URL newUrl  = videoService.resolveDashSegmentLocationFromBaseLocation(url,chunkName);
+            String protocol = url.getProtocol();
 
-        CompletableFuture<ResponseEntity<?>> responseFuture = dashFuture.thenApplyAsync(dashSeg -> {
+            System.out.println("\nprotocol is\n" + protocol+" url "+url +  " loc " + newUrl);
+            CompletableFuture<byte[]> byteFuture = storageProperties.getStorageService(protocol).readFileAsBytes(newUrl);
 
-            try {
-                URL dashSegUrl = dashSeg.getLocation();
-                String protocol = dashSegUrl.getProtocol();
-                System.out.println("\nprotocol is\n" + protocol);
-                byte[] bytes = storageProperties.getStorageService(protocol).readFileAsBytes(dashSegUrl).get();
+            response = byteFuture.thenApplyAsync(bytes -> {
+                System.out.println("length "+bytes.length);
                 return new ResponseEntity<>(bytes, HttpStatus.OK);
-            } catch (Exception e) {
-                return new ResponseEntity<>("Dash Segment Not found", HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        });
+            });
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.complete(new ResponseEntity<>("Dash Segment Not found", HttpStatus.INTERNAL_SERVER_ERROR));
+        }
 
-        return responseFuture;
-
-
+        return response;
     }
 
 

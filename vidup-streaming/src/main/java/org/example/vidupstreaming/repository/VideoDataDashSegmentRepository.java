@@ -18,6 +18,8 @@ public interface VideoDataDashSegmentRepository extends VideoDataRepository<Vide
 
     VideoDataDashSegment findByVideoIdAndSegmentFileName(UUID videoId, String segmentFileName);
 
+    VideoDataDashSegment findFirstByVideoId(UUID videoId);
+
     @Transactional
     @Async
     CompletableFuture<VideoDataDashSegment> findBySegmentFileNameAndVideoId(String segmentFileName, UUID videoId);

@@ -5,26 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/all_playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/all_playlists.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/all_videos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/all_videos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/controlbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/controlbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/creative_centre.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/creative_centre.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/dash_player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/dash_player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/highlighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/highlighter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/livestream.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/livestream.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/playlist_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/playlist_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/require.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/require.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/subscriptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/subscriptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/video_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/video_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash-hls-bitrate-switcher-debug.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash-hls-bitrate-switcher-debug.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/videojs-dash.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vjs_dash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vjs_dash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/target/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/VidupStreamingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/VidupStreamingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/controller/VideoStreamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/controller/VideoStreamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/repository/VideoDataDashSegmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/repository/VideoDataDashSegmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/service/VideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/StorageProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/StorageProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/internal/AzureStorageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/internal/AzureStorageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-streaming/target/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,13 +64,14 @@
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.vidup-core.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.vidup-media-processing.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.vidup-streaming.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan/Desktop/VIDUP_PROJECT/VIDUP - Copy/vidup-core-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan.paul/Desktop/VIDUP/vidup/vidup-core-module&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -88,6 +81,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15625&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.62643677&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -115,10 +109,10 @@
     <configuration name="All in vidup-streaming" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http">
       <method v="2" />
     </configuration>
-    <configuration name="vidup-streaming | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" requestIdentifier="#1" runType="Run single request">
+    <configuration name="vidup-streaming | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="vidup-streaming | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" index="2" requestIdentifier="#2" runType="Run single request">
+    <configuration name="vidup-streaming | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/vidup-streaming.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="VidupStreamingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -162,13 +156,13 @@
     </configuration>
     <configuration name="vidup-streaming" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" value="dev" />
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-23" />
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="azure.storage.account" value="https://vidup.blob.core.windows.net" />
         <env name="azure.storage.account.sas.token" value="sv=2022-11-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacupiytfx&amp;se=2024-12-31T21:33:10Z&amp;st=2024-09-18T13:33:10Z&amp;spr=https,http&amp;sig=AtxsOnQqOxL5SVtTzvQoNSoSnuj9Qdd%2Bny%2BwS%2B71Vbw%3D" />
         <env name="azure.video.files.container" value="video-files" />
-        <env name="spring.datasource.password" value=" " />
+        <env name="spring.datasource.password" value="root" />
         <env name="spring.datasource.username" value="root" />
       </envs>
       <module name="vidup-streaming" />
@@ -207,8 +201,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
@@ -269,6 +263,9 @@
       <workItem from="1730393244261" duration="987000" />
       <workItem from="1730395852333" duration="1173000" />
       <workItem from="1730442242265" duration="209000" />
+      <workItem from="1746436415644" duration="11332000" />
+      <workItem from="1746507733646" duration="13638000" />
+      <workItem from="1746533704137" duration="2558000" />
     </task>
     <servers />
   </component>

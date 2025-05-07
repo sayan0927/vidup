@@ -8,6 +8,7 @@ import jakarta.annotation.PostConstruct;
 import org.example.vidupstreaming.storage.AzureStorageService;
 import org.example.vidupstreaming.storage.LocalStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -18,6 +19,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 
+@ConditionalOnProperty(name = "final.store.location", havingValue = "azure")
 @Service
 public class AzureStorageServiceImpl implements AzureStorageService {
 
