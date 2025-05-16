@@ -132,7 +132,7 @@ public class Pipeline {
         Path outPath = receivedMessage.getOutputPath();
         UUID videoID = receivedMessage.getVideoId();
 
-        CompletableFuture<Void> dashFuture = mpegDashHandlerService.createDashFilesTest(inFileName, inFilePath, outPath, videoID).thenAccept(dtoList -> {
+        CompletableFuture<Void> dashFuture = mpegDashHandlerService.createDashFiles(inFileName, inFilePath, outPath, videoID).thenAccept(dtoList -> {
             if (dtoList == null || dtoList.isEmpty()) {
 
                 PipelineMessageFailure<UUID> failMsg = new PipelineMessageFailure<>(receivedMessage.getVideoId(), "Could not create the Dash files");

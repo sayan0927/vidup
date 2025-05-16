@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="">
+    <list default="true" id="de63c563-d22e-4579-8047-ac15680395e9" name="Changes" comment="used 2nd level cache for getting dash segment location">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/target/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/VidupStreamingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/VidupStreamingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/pipeline_components/dashservice/MpegDashHandlerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/pipeline_components/dashservice/MpegDashHandlerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/pipeline_components/dashservice/internal/FFMPEGDashHandlerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/pipeline_components/dashservice/internal/FFMPEGDashHandlerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/rabbitmq_pipeline/Pipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-media-processing/src/main/java/org/example/vidupmediaprocessing/upload_pipeline/rabbitmq_pipeline/Pipeline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/controller/VideoStreamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/controller/VideoStreamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/repository/VideoDataDashSegmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/repository/VideoDataDashSegmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/service/VideoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/StorageProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/StorageProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/internal/AzureStorageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/java/org/example/vidupstreaming/storage/internal/AzureStorageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../vidup-streaming/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vidup-streaming/target/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +26,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sayan0927&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sayan0927/vidup.git&quot;,
+    &quot;accountId&quot;: &quot;76a4612e-5aa8-4995-9f39-bdfcd1a5a0d7&quot;
+  }
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -71,7 +78,7 @@
     &quot;Spring Boot.vidup-streaming.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan.paul/Desktop/VIDUP/vidup/vidup-core-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sayan.paul/Desktop/CW-IMO-MAINTENANCE/CW-IMO-MAINTENANCE/IMO-PLANNING-BOARD&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -181,14 +188,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.vidup-docker" />
-      <item itemvalue="HTTP Request.vidup-streaming | #2" />
       <item itemvalue="HTTP Request.All in vidup-streaming" />
       <item itemvalue="HTTP Request.vidup-streaming | #1" />
+      <item itemvalue="HTTP Request.vidup-streaming | #2" />
       <item itemvalue="Spring Boot.VidupStreamingApplication" />
-      <item itemvalue="Spring Boot.vidup-streaming" />
-      <item itemvalue="Spring Boot.vidup-media-processing" />
       <item itemvalue="Spring Boot.vidup-core" />
+      <item itemvalue="Spring Boot.vidup-media-processing" />
+      <item itemvalue="Spring Boot.vidup-streaming" />
+      <item itemvalue="Docker.vidup-docker" />
     </list>
     <recent_temporary>
       <list>
@@ -266,7 +273,18 @@
       <workItem from="1746436415644" duration="11332000" />
       <workItem from="1746507733646" duration="13638000" />
       <workItem from="1746533704137" duration="2558000" />
+      <workItem from="1746600949319" duration="11492000" />
+      <workItem from="1746682909582" duration="41000" />
     </task>
+    <task id="LOCAL-00001" summary="used 2nd level cache for getting dash segment location">
+      <option name="closed" value="true" />
+      <created>1746601184291</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746601184291</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,5 +306,9 @@
     <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="used 2nd level cache for getting dash segment location" />
+    <option name="LAST_COMMIT_MESSAGE" value="used 2nd level cache for getting dash segment location" />
   </component>
 </project>

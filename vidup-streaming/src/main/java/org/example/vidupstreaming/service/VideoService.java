@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -45,21 +46,24 @@ public class VideoService {
     @Autowired
     CacheManager cacheManager;
 
+    private static String dashSegmentCacheKey = "DASHSEGMENTCACHE";
+    private static String mp4CacheKey = "MP4CACHE";
 
 
-    @Transactional
-    public VideoDataDashSegment getDashSegmentOfVideo(UUID videoId, String dashSegmentName) {
 
-        String key = videoId.toString() + "_" + dashSegmentName;
-        System.out.println(cacheManager.getCacheNames());
-        if(cacheManager.getCache(key).get(key) != null) {
-            return cacheManager.getCache(key).get(videoId, VideoDataDashSegment.class);
+
+
+    public VideoDataMP4 getDefaultMp4(String videoId) {
+        if(Objects.requireNonNull(cacheManager.getCache(mp4CacheKey)).get(videoId) != null) {
+            System.out.println("FETCHING FROM CACHE");
+            return Objects.requireNonNull(cacheManager.getCache(mp4CacheKey)).get(videoId, VideoDataMP4.class);
         }
 
         System.out.println("FETCHING FROM DB");
-        VideoDataDashSegment segment = dashSegmentRepository.findByVideoIdAndSegmentFileName(videoId, dashSegmentName);
-        cacheManager.getCache(key).put(key, segment);
-        return segment;
+        List<VideoDataMP4> list = getMp4Data(UUID.fromString(videoId));
+        VideoDataMP4 videoDataMP4 = utilClass.determineEntityForDefaultLanguage(list);
+        Objects.requireNonNull(cacheManager.getCache(mp4CacheKey)).put(videoId, videoDataMP4);
+        return videoDataMP4;
     }
 
     public URL resolveDashSegmentLocationFromBaseLocation(URL baseLocation,String dashSegmentName) throws MalformedURLException {
@@ -72,12 +76,12 @@ public class VideoService {
     {
 
         if(cacheManager.getCache(videoId.toString())!=null &&
-        cacheManager.getCache(videoId.toString()).get(videoId) != null) {
-           // System.out.println("fetching from cache");
-            return cacheManager.getCache(videoId.toString()).get(videoId, URL.class);
+        Objects.requireNonNull(cacheManager.getCache(videoId.toString())).get(videoId) != null) {
+            System.out.println("fetching from cache");
+            return Objects.requireNonNull(cacheManager.getCache(videoId.toString())).get(videoId, URL.class);
         }
 
-      //  System.out.println("fetching from DB");
+        System.out.println("fetching from DB");
 
         VideoDataDashSegment dataDashSegment = dashSegmentRepository.findFirstByVideoId(videoId);
         String baseLocation = dataDashSegment.getLocation().toString();
@@ -87,7 +91,7 @@ public class VideoService {
 
         System.out.println("loc is "+baseLocation);
         try {
-            cacheManager.getCache(videoId.toString()).put(videoId, new URL(baseLocation));
+            Objects.requireNonNull(cacheManager.getCache(videoId.toString())).put(videoId, new URL(baseLocation));
             return new URL(baseLocation);
         }
         catch (Exception e)

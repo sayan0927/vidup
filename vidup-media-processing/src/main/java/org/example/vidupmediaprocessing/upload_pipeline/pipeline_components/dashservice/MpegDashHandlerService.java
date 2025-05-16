@@ -15,7 +15,7 @@ public interface MpegDashHandlerService {
 
 
 
-    CompletableFuture<List<VideoDataDTO>> createDashFilesTest(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId);
+    CompletableFuture<List<VideoDataDTO>> createDashFiles(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId);
 
-    CompletableFuture<List<VideoDataDTO>> createDashFilesTest(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId, Executor executor);
+    CompletableFuture<List<VideoDataDTO>> createDashFiles(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId, Executor executor);
 }

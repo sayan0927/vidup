@@ -40,12 +40,12 @@ class FFMPEGDashHandlerService implements MpegDashHandlerService {
 
 
     @Override
-    public CompletableFuture<List<VideoDataDTO>> createDashFilesTest(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId) {
-        return createDashFilesTest(inputFileName, inputFileLocation, outputLocation, videoId, getDefaultExecutor);
+    public CompletableFuture<List<VideoDataDTO>> createDashFiles(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId) {
+        return createDashFiles(inputFileName, inputFileLocation, outputLocation, videoId, getDefaultExecutor);
     }
 
     @Override
-    public CompletableFuture<List<VideoDataDTO>> createDashFilesTest(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId, Executor executor) {
+    public CompletableFuture<List<VideoDataDTO>> createDashFiles(String inputFileName, Path inputFileLocation, Path outputLocation, UUID videoId, Executor executor) {
         String manifestName = dashConfig.manifestName;
 
 
@@ -54,7 +54,7 @@ class FFMPEGDashHandlerService implements MpegDashHandlerService {
         CompletableFuture<List<VideoDataDTO>> future = CompletableFuture.runAsync(() -> {
 
             try {
-                dashHandler.createMpegDash(inputFileName, inputFileLocation, outputLocation, manifestName, dashConfig.dashCommandOriginalAnd480pTemplate());
+                dashHandler.createMpegDash(inputFileName, inputFileLocation, outputLocation, manifestName, dashConfig.dashCommandTemplate());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);

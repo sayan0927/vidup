@@ -65,14 +65,14 @@ public class VideoStreamController {
     @GetMapping("/stream/dash/{videoId}/{chunkName}")
     public CompletableFuture<ResponseEntity<?>> getDashChunk(@PathVariable("videoId") String videoId, @PathVariable(value = "chunkName", required = false) String chunkName) {
 
-        URL url = videoService.getBaseLocation(UUID.fromString(videoId),chunkName);
+        URL baseURL = videoService.getBaseLocation(UUID.fromString(videoId),chunkName);
         CompletableFuture<ResponseEntity<?>> response = new CompletableFuture<>();
 
         try {
-            URL newUrl  = videoService.resolveDashSegmentLocationFromBaseLocation(url,chunkName);
-            String protocol = url.getProtocol();
+            URL newUrl  = videoService.resolveDashSegmentLocationFromBaseLocation(baseURL,chunkName);
+            String protocol = baseURL.getProtocol();
 
-            System.out.println("\nprotocol is\n" + protocol+" url "+url +  " loc " + newUrl);
+            System.out.println("\nprotocol is\n" + protocol+" url "+baseURL +  " loc " + newUrl);
             CompletableFuture<byte[]> byteFuture = storageProperties.getStorageService(protocol).readFileAsBytes(newUrl);
 
             response = byteFuture.thenApplyAsync(bytes -> {
@@ -100,15 +100,13 @@ public class VideoStreamController {
             , @PathVariable(value = "userId", required = false) String userId, @PathVariable(value = "token", required = false) String token) {
 
         UUID vid = UUID.fromString(videoId);
-        List<VideoDataMP4> list = videoService.getMp4Data(vid);
 
 
+        VideoDataMP4 defaultMp4 = videoService.getDefaultMp4(videoId);
+        URL url = defaultMp4.getLocation();
 
-        VideoDataMP4 defaultMp4 = utilClass.determineEntityForDefaultLanguage(list);
         String fileType = "mp4";
         long fileSize = defaultMp4.getSize();
-
-        URL url = defaultMp4.getLocation();
 
         long rangeStart = 0;
         long rangeEnd = constants.CHUNK_SIZE;
