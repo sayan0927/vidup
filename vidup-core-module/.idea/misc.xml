@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../video-streaming-module-webflux-master/pom.xml" />
+        <option value="$PROJECT_DIR$/vidup-notification-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../video-streaming-notifications-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../video-streaming-notifications/pom.xml" />
+        <option value="$PROJECT_DIR$/../vidup-streaming-module/pom.xml" />
+        <option value="$PROJECT_DIR$/../vidup-nsfw-java/pom.xml" />
+        <option value="$PROJECT_DIR$/../vidup-media-processing/pom.xml" />
+        <option value="$PROJECT_DIR$/../vidup-streaming/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/../video-streaming-notifications-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../video-streaming-notifications/pom.xml" />
+        <option value="$PROJECT_DIR$/../vidup-nsfw-java/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

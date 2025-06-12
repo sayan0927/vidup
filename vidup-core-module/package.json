@@ -1,0 +1,26 @@
+{
+  "name": "video-streaming-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "@preline/remove-element": "^2.1.0",
+    "@samueleastdev/videojs-dash-hls-bitrate-switcher": "^1.0.7",
+    "@tailwindcss/forms": "^0.5.7",
+    "date-fns": "^3.6.0",
+    "flowbite": "^2.3.0",
+    "global": "^4.4.0",
+    "media-stream-library": "^13.1.1",
+    "validator": "^13.12.0",
+    "videojs-contrib-quality-levels": "^4.1.0"
+  }
+}

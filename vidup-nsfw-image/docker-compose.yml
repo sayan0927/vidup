@@ -1,0 +1,19 @@
+networks:
+  vidup-net:
+  
+  
+services:
+  
+  
+  nsfw:
+    build: .
+    container_name: nsfw
+    volumes:
+      - ./app:/app
+    ports:
+    - 8003:8003
+
+  
+ 
+
+    

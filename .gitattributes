@@ -1,0 +1,7 @@
+vidup-nsfw-image/venv/Lib/** linguist-vendored
+vidup-core-module/node_modules/** linguist-vendored=true
+vidup-core-module/target/** linguist-vendored=true
+vidup-core-module/src/main/resources/static/js/video.js -linguist-vendored=true
+vidup-core-module/src/main/resources/static/js/require.js -linguist-vendored=true
+*.java linguist-language=Java
+*.js linguist-language=JavaScript

@@ -1,0 +1,185 @@
+networks:
+  vidup-net:
+  
+  
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: rabbit
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+    networks:
+      - vidup-net
+    environment:
+        RABBITMQ_DEFAULT_USER: ${EXT_SPRING_RABBITMQ_USERNAME}
+        RABBITMQ_DEFAULT_PASSWORD: ${EXT_SPRING_RABBITMQ_PASSWORD}
+  
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${EXT_SPRING_DATA_MONGODB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${EXT_SPRING_DATA_MONGODB_PASSWORD}
+      MONGODB_INITDB_DATABASE: vidup
+    ports:
+      - "27017:27017"
+    networks:
+      - vidup-net
+    volumes:
+      - mongo-data:/data/db
+        
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_BASICAUTH_USERNAME: ${EXT_SPRING_DATA_MONGODB_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${EXT_SPRING_DATA_MONGODB_PASSWORD}
+      #ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${EXT_SPRING_DATA_MONGODB_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${EXT_SPRING_DATA_MONGODB_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongo://mongoadmin:mongoadmin@mongodb:27017/ 
+    networks:
+      - vidup-net
+    depends_on:
+      - mongodb
+  
+  mysqldb:
+    platform: linux/x86_64
+    image: mysql:latest
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d/
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${EXT_SPRING_DATASOURCE_PASSWORD}
+      MYSQL_DATABASE: vidup
+      MYSQL_PASSWORD: ${EXT_SPRING_DATASOURCE_PASSWORD}
+    networks:
+      - vidup-net
+  
+  phpmyadmin:
+    depends_on:
+      - mysqldb
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8090:80"
+    environment:
+      PMA_HOST: mysqldb
+      MYSQL_ROOT_PASSWORD: ${EXT_SPRING_DATASOURCE_PASSWORD}
+    networks:
+      - vidup-net
+ 
+  media-procc:
+    build: /vidup-media-processing
+    restart: always
+    container_name: media-procc
+    ports:
+      - "8001:8001"
+    networks:
+      - vidup-net  
+    env_file: .env  
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "register-data.url": "http://core:8000/videos/processing/videoId/register_data",
+          "spring.rabbitmq.username": "${EXT_SPRING_RABBITMQ_USERNAME}",
+          "spring.rabbitmq.password": "${EXT_SPRING_RABBITMQ_PASSWORD}"
+        }'
+      SPRING_PROFILES_ACTIVE: dockerlocal
+      SERVER_PORT: 8001
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./videostore-docker:/commonstore  
+
+  stream:
+    build: /vidup-streaming
+    restart: always
+    container_name: stream
+    ports:
+      - "8080:8080"
+    networks:
+      - vidup-net 
+    env_file: .env      
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQLDialect",
+          "spring.datasource.url" : "${EXT_SPRING_DATASOURCE_URL}",
+          "spring.datasource.username" : "${EXT_SPRING_DATASOURCE_USERNAME}",
+          "spring.datasource.password" : "${EXT_SPRING_DATASOURCE_PASSWORD}",
+          "azure.storage.account" : "${EXT_AZURE_STORAGE_ACCOUNT}",
+          "azure.storage.account.sas.token" : "${EXT_AZURE_STORAGE_ACCOUNT_SAS_TOKEN}",
+          "azure.video.files.container" : "${EXT_AZURE_VIDEO_FILES_CONTAINER}"
+        }'
+      SPRING_PROFILES_ACTIVE: dockerlocal
+      SERVER_PORT: 8080
+    depends_on:
+      - mysqldb
+    volumes:
+      - ./videostore-docker:/commonstore  
+ 
+  core:
+    build: /vidup-core-module
+    restart: always
+    container_name: core
+    ports:
+      - "8000:8000"
+    networks:
+      - vidup-net  
+    env_file: .env  
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "spring.data.mongodb.uri" : "mongodb://$EXT_SPRING_DATA_MONGODB_USERNAME:$EXT_SPRING_DATA_MONGODB_PASSWORD@mongodb:$EXT_MONGODB_DOCKER_PORT/$EXT_MONGODB_DATABASE?authSource=admin",
+          "spring.data.mongodb.host" : "${EXT_SPRING_DATA_MONGODB_HOST}",
+          "spring.data.mongodb.password" : "${EXT_SPRING_DATA_MONGODB_PASSWORD}",
+          "spring.data.mongodb.username" : "${EXT_SPRING_DATA_MONGODB_USERNAME}",
+          "spring.data.mongodb.port" : "${EXT_MONGODB_DOCKER_PORT}",
+          "spring.datasource.url" : "${EXT_SPRING_DATASOURCE_URL}",
+          "spring.datasource.username" : "${EXT_SPRING_DATASOURCE_USERNAME}",
+          "spring.datasource.password" : "${EXT_SPRING_DATASOURCE_PASSWORD}",
+          "azure.storage.account" : "${EXT_AZURE_STORAGE_ACCOUNT}",
+          "azure.storage.account.sas.token" : "${EXT_AZURE_STORAGE_ACCOUNT_SAS_TOKEN}",
+          "azure.video.files.container" : "${EXT_AZURE_VIDEO_FILES_CONTAINER}",
+          "spring.mail.username" : "${EXT_SPRING_MAIL_USERNAME}",
+          "spring.mail.password" : "${EXT_SPRING_MAIL_PASSWORD}",
+          "spring.rabbitmq.username": "${EXT_SPRING_RABBITMQ_USERNAME}",
+          "spring.rabbitmq.password": "${EXT_SPRING_RABBITMQ_PASSWORD}",
+          "final.store.location":  "${EXT_FINAL_STORE_LOCATION}"
+        }'
+      SPRING_PROFILES_ACTIVE: dockerlocal  
+      SERVER_PORT: 8000
+      STREAMING_IP: 192.168.1.2
+      STREAMING_PORT: 8080
+      CORE_IP: 192.168.1.2
+      CORE_PORT: 8000      
+    depends_on:
+      - mysqldb
+      - mongodb
+      - rabbitmq
+    volumes:
+      - ./videostore-docker:/commonstore  
+  
+  nsfw:
+    build: /vidup-nsfw-image
+    container_name: nsfw
+    volumes:
+      - ./vidup-nsfw-image/app:/app
+      - ./videostore-docker:/commonstore
+    ports:
+    - 8003:8003
+volumes:
+  db-data:
+  mongo-data:
+  videostore:
+    external: true
+  
+ 
+
+    

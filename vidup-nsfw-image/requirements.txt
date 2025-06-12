@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+nudenet==2.0.8
